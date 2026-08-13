@@ -1,0 +1,16 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^sudo docker ps -a --format \"table \\{\\{\\.Names\\}\\}\\\\t\\{\\{\\.Image\\}\\}\\\\t\\{\\{\\.Status\\}\\}\\\\t\\{\\{\\.Ports\\}\\}\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^sudo ls -l /var/run/docker\\.sock$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^id -nG$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

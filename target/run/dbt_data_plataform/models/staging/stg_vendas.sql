@@ -1,0 +1,13 @@
+
+  create view "analytics"."public"."stg_vendas__dbt_tmp"
+    
+    
+  as (
+    select
+    id_cliente as cliente_id,
+    id_produto as produto_id,
+    id_venda,
+    quantidade,
+    data_pedido
+from "analytics"."public"."raw_vendas"
+  );

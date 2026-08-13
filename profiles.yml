@@ -1,0 +1,12 @@
+sales_modeling:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      threads: 1
+      host: 127.0.0.1
+      port: 5432
+      user: postgres
+      password: secret
+      dbname: analytics
+      schema: public
