@@ -1,13 +1,22 @@
 # dbt-data-plataform
 
-Breve repositório de exemplo que conecta dbt a um Postgres rodando em Docker.
+Este repositório é um exemplo de pipeline analítico construído com dbt, usando um
+Postgres rodando em Docker como ambiente de desenvolvimento. Ele inclui seeds
+(dados de exemplo), modelos de staging e uma estrutura mínima de projeto dbt.
+
+Por que este projeto é importante
+- Reprodutibilidade: demonstra como provisionar um banco local (Docker) e
+	executar transformações de forma determinística com `dbt`.
+- Boas práticas de engenharia de dados: separação entre `seeds`, `staging`
+	e modelos finais (marts), permitindo testes, documentação e lineage.
+- Documentação e observabilidade: uso de `dbt docs` para gerar catálogo e
+	documentação navegável, útil para times e auditoria de dados.
 
 ## Requisitos
 - Docker
 - `uv` (ambiente Python usado neste projeto)
-- Acesso ao repositório remoto (`origin`) configurado
 
-## Como usar (rápido)
+## Uso rápido
 
 1. Verifique que o Docker está rodando:
 
@@ -15,14 +24,13 @@ Breve repositório de exemplo que conecta dbt a um Postgres rodando em Docker.
 sudo systemctl status docker
 ```
 
-2. Se necessário, inicie o container Postgres (exemplo):
+2. Inicie (ou confirme) o container Postgres usado pelo projeto:
 
 ```bash
-# exemplo (se precisar recriar):
 docker run --rm --name postgres-dbt -e POSTGRES_PASSWORD=secret -e POSTGRES_DB=analytics -p 5432:5432 -d postgres:15
 ```
 
-3. Use `uv` para executar comandos dbt no ambiente correto:
+3. Execute comandos dbt via `uv` (garante o ambiente correto):
 
 ```bash
 # validar conexão
@@ -52,7 +60,7 @@ PGPASSWORD=secret psql -h 127.0.0.1 -p 5432 -U postgres -d analytics -c "select 
 - `dbt_project.yml` — configuração do projeto dbt (model-paths, seed-paths, profile).
 - `seeds/` — CSVs carregados com `dbt seed`.
 - `models/` — modelos dbt (staging e marts).
-- `COMMANDS.md` — referência dos comandos usados no projeto.
+- `COMMANDS.md` — referência dos comandos usados durante a configuração.
 
 ## Notas
 - Se receber `permission denied` ao usar `docker`, adicione seu usuário ao grupo `docker`:
@@ -62,7 +70,4 @@ sudo usermod -aG docker $USER
 newgrp docker
 ```
 
-Arquivo gerado em: 2026-08-13
-# dbt-data-plataform
-# dbt-data-plataform
-# dbt-data-plataform
+Arquivo atualizado em: 2026-08-13
