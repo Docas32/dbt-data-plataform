@@ -28,6 +28,20 @@ graph LR
 
 
 
+dbt-data-platform/
+├── dbt_project/               # Projeto principal do dbt
+│   ├── models/
+│   │   ├── staging/           # Camada 1: Limpeza e renomeação (stg_*.sql)
+│   │   ├── intermediate/      # Camada 2: Joins e lógica de negócio (int_*.sql)
+│   │   └── marts/             # Camada 3: Agregações prontas para consumo (mart_*.sql)
+│   ├── seeds/                 # Dados brutos (raw_clientes, raw_produtos, raw_vendas)
+│   ├── tests/                 # Testes customizados (ex: row_count_comparison)
+│   └── schema.yml             # Definição de testes de qualidade (not_null, unique)
+├── airflow/                   # DAGs do Airflow
+│   └── dag_sales_pipeline.py  # DAG com BashOperator executando 'dbt run'
+└── docker-compose.yml         # Sobe Postgres, pgAdmin e Airflow com um comando
+
+
 
 
 
@@ -112,4 +126,6 @@ sudo usermod -aG docker $USER
 newgrp docker
 ```
 
-Arquivo atualizado em: 2026-08-13
+Caso queira discutir este projeto, oportunidades ou colaborações, estou à disposição: docasdocas33@gmail.com | LinkedIn
+
+Arquivo atualizado em: 2026-08-14
