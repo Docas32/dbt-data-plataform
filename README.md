@@ -1,3 +1,45 @@
+# Projeto: Plataforma de Dados para Análise de Vendas (dbt + Airflow + Docker)
+
+![dbt](https://img.shields.io/badge/dbt-FF694B?style=for-the-badge&logo=dbt&logoColor=white)
+![Airflow](https://img.shields.io/badge/Airflow-017CEE?style=for-the-badge&logo=apache-airflow&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+
+## 🎯 Contexto e Objetivo de Negócio
+
+Este projeto simula a construção de uma **plataforma de dados moderna** para uma empresa de e-commerce. O objetivo é consolidar dados brutos de clientes, produtos e vendas (100 mil registros) para gerar um **painel de receita mensal por categoria de produto**.
+
+**Valor de negócio:** A área comercial pode, com este pipeline, tomar decisões baseadas em dados sobre quais categorias investir e precificar, com atualizações automáticas diárias.
+
+## 🏗️ Arquitetura da Solução (Modern Data Stack)
+
+O projeto implementa os conceitos de **Engenharia de Dados** em um ambiente containerizado e orquestrado.
+
+```mermaid
+graph LR
+    A[Dados Brutos - CSVs] --> B[(PostgreSQL - Raw)];
+    B --> C[dbt - Camada Staging];
+    C --> D[dbt - Camada Intermediate];
+    D --> E[dbt - Camada Marts];
+    E --> F[Airflow - Orquestração Diária];
+    F --> G[Tabela Agregada para BI];
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # dbt-data-plataform
 
 Este repositório é um exemplo de pipeline analítico construído com dbt, usando um
