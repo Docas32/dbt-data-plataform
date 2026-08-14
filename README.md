@@ -27,33 +27,6 @@ graph LR
 
 
 
-
-dbt-data-platform/
-├── dbt_project/               # Projeto principal do dbt
-│   ├── models/
-│   │   ├── staging/           # Camada 1: Limpeza e renomeação (stg_*.sql)
-│   │   ├── intermediate/      # Camada 2: Joins e lógica de negócio (int_*.sql)
-│   │   └── marts/             # Camada 3: Agregações prontas para consumo (mart_*.sql)
-│   ├── seeds/                 # Dados brutos (raw_clientes, raw_produtos, raw_vendas)
-│   ├── tests/                 # Testes customizados (ex: row_count_comparison)
-│   └── schema.yml             # Definição de testes de qualidade (not_null, unique)
-├── airflow/                   # DAGs do Airflow
-│   └── dag_sales_pipeline.py  # DAG com BashOperator executando 'dbt run'
-└── docker-compose.yml         # Sobe Postgres, pgAdmin e Airflow com um comando
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # dbt-data-plataform
 
 Este repositório é um exemplo de pipeline analítico construído com dbt, usando um
@@ -125,6 +98,32 @@ PGPASSWORD=secret psql -h 127.0.0.1 -p 5432 -U postgres -d analytics -c "select 
 sudo usermod -aG docker $USER
 newgrp docker
 ```
+
+
+dbt-data-platform/
+├── dbt_project/               # Projeto principal do dbt
+
+│   ├── models/
+
+│   │   ├── staging/           # Camada 1: Limpeza e renomeação (stg_*.sql)
+
+│   │   ├── intermediate/      # Camada 2: Joins e lógica de negócio (int_*.sql)
+
+│   │   └── marts/             # Camada 3: Agregações prontas para consumo (mart_*.sql)
+
+│   ├── seeds/                 # Dados brutos (raw_clientes, raw_produtos, raw_vendas)
+
+│   ├── tests/                 # Testes customizados (ex: row_count_comparison)
+
+│   └── schema.yml             # Definição de testes de qualidade (not_null, unique)
+
+├── airflow/                   # DAGs do Airflow
+
+│   └── dag_sales_pipeline.py  # DAG com BashOperator executando 'dbt run'
+
+└── docker-compose.yml         # Sobe Postgres, pgAdmin e Airflow com um comando
+
+
 
 Caso queira discutir este projeto, oportunidades ou colaborações, estou à disposição: docasdocas33@gmail.com | LinkedIn
 
